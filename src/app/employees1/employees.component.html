@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<h2  align='center'>Employees 1</h2>
+
+<div class="container" >
+  
+   
+<table class="table">
+    <br>
+<tr>
+      <td><input type="text" align="left" class="form-control" placeholder="Search" [(ngModel)]="filteredString"/></td>
+   
+     <td>
+        <select class="form-control" [(ngModel)]='sort'>
+           <option  [value]='1'>sortByName</option>
+           <option [value]='2'>sortById</option>
+           <option [value]='3'>sortBySalary</option>
+          </select>
+          </td>
+        </tr>
+
+  </table>
+
+<table  class="table"  border="2px">
+      <tr *ngFor='let employee of employees | searchpipe:filteredString |filterpipe:sort' appColor >
+   <td> {{employee.empId }} </td>
+   <td> {{employee.empName | titlecase}} </td>
+   <td>{{employee.empSal | currency:'INR'}} </td>
+   
+   </tr>
+</table>
+</div>
